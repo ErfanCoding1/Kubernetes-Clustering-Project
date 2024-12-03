@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: instance-id-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: instance-id-service
+  template:
+    metadata:
+      labels:
+        app: instance-id-service
+    spec:
+      containers:
+      - name: instance-id-service
+        image: erfanerfan/instance-id-service
+        ports:
+        - containerPort: 5000
